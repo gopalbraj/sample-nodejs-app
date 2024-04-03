@@ -3,7 +3,6 @@ pipeline {
         HROME_PATH="/usr/bin/google-chrome"
     }
     agent any
-    C
   tools {nodejs "node"}
     stages {
         stage('Checkout') {
