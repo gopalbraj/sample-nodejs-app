@@ -1,6 +1,9 @@
 pipeline {
+    environment {
+        HROME_PATH="/usr/bin/google-chrome"
+    }
     agent any
-    CHROME_PATH="/usr/bin/google-chrome"
+    C
   tools {nodejs "node"}
     stages {
         stage('Checkout') {
