@@ -34,16 +34,29 @@ pipeline {
             }
         }
         stage('Performance Tests') {
-          steps {
-              script{
+          //steps {
+             // script{
                   //sh 'lighthouse https://google.com --chrome-flags --headless --quiet --output json --output-path lighthouse_report.json'
                   //sh 'npx lighthouse-ci https://www.google.com'
                   //--jsonReport --report=.' 
                   //lighthouseReport('./report.json')
-                  sh 'lhci autorun'
-              }
-  }
- 
-}
+                //  sh 'lhci autorun'
+              //}
+
+              steps {
+                script {
+                    // Replace http://your-app-url.com with the URL of the site you want to audit
+                    // The --output-path flag specifies where the report will be saved
+                    sh 'lighthouse https://verizon-nextjs-sandbox-default.glb.edgio.link/ngd/blueprint/smartphones --output json --output-path ./lighthouse-report.json'
+                }
+            }
+        }
     }
+    post {
+        always {
+            // You can archive the reports, email them, or add steps to analyze the results.
+            archiveArtifacts artifacts: 'lighthouse-report.json', onlyIfSuccessful: true
+        }
+    }
+  
 }
