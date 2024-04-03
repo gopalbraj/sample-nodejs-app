@@ -1,7 +1,7 @@
 {
   "ci": {
     "collect": {
-      "url": ["https://google.com"],
+      "url": ["https://verizon-nextjs-sandbox-default.glb.edgio.link/ngd/blueprint/smartphones"],
       "numberOfRuns": 1
     },
     "assert": {
