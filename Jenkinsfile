@@ -31,7 +31,7 @@ pipeline {
         }
         stage('Performance Tests') {
           steps {
-            sh 'lighthouse --output-path=./lighthouse-report.html --quiet --chrome-flags='--headless' https://kitconcept.com'
+            sh 'lighthouse --output-path=./lighthouse-report.html --quiet --chrome-flags=--headless https://kitconcept.com'
   }
  
 }
