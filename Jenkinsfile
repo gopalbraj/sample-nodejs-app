@@ -36,7 +36,7 @@ pipeline {
         stage('Performance Tests') {
           steps {
               script{
-                  sh 'lighthouse https://google.com --output json --output-path lighthouse_report.json'
+                  sh 'lighthouse https://google.com --chrome-flags="--headless --output json --output-path lighthouse_report.json'
               }
   }
  
