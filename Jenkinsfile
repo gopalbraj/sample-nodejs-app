@@ -12,6 +12,7 @@ pipeline {
             steps {
                 sh 'npm install'
                 sh 'npm install -g lighthouse'
+                sh 'npm install -g @lhci/cli'
             }
         }
         stage('Test') {
@@ -31,7 +32,7 @@ pipeline {
         }
         stage('Performance Tests') {
           steps {
-            sh 'lighthouse --output-path=./lighthouse-report.html --quiet --chrome-flags=--headless https://kitconcept.com'
+            sh 'lhci autorun'
   }
  
 }
