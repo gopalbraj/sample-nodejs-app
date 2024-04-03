@@ -33,7 +33,7 @@ pipeline {
         }
         stage('Performance Tests') {
           steps {
-              scripts{
+              script{
                   sh 'lighthouse https://example.com --output json --output-path lighthouse_report.json'
               }
   }
