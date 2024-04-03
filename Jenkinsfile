@@ -33,7 +33,8 @@ pipeline {
         }
         stage('Performance Tests') {
           steps {
-            sh 'lhci autorun'
+              scripts{
+                  sh 'lighthouse https://example.com --output json --output-path lighthouse_report.json'
   }
  
 }
