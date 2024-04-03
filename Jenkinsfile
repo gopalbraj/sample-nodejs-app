@@ -13,6 +13,7 @@ pipeline {
                 sh 'npm install'
                 sh 'npm install -g lighthouse'
                 sh 'npm install -g @lhci/cli'
+                sh 'npm install chrome-launcher'
             }
         }
         stage('Test') {
