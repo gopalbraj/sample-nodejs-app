@@ -11,6 +11,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'npm install'
+                sh 'npm install -g lighthouse'
             }
         }
         stage('Test') {
