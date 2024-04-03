@@ -29,25 +29,11 @@ pipeline {
                 sh 'nohup npm start &'
             }
         }
-         stage('Performance Tests') {
-  steps {
-    deleteDir()
-    checkout scm
-    sh 'npm install'
-    sh 'npm install -g lighthouse'
+        stage('Performance Tests') {
+          steps {
+            sh 'lighthouse --output-path=./lighthouse-report.html --quiet --chrome-flags='--headless' https://kitconcept.com'
   }
-  post {
-    always {
-      publishHTML (target: [
-        allowMissing: false,
-        alwaysLinkToLastBuild: false,
-        keepAll: true,
-        reportDir: '.',
-        reportFiles: 'lighthouse-report.html',
-        reportName: "Lighthouse"
-      ])
-    }
-  }
+ 
 }
     }
 }
