@@ -23,7 +23,7 @@ pipeline {
     }
     post {
         always {
-            lighthouseReport 'lighthouse/reports/reports'
+            lighthouseReport 'lighthouse/reports'
         }
     }
   
