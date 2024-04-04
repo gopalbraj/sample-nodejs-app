@@ -44,9 +44,10 @@ const app_name = "Blueprint";
     // Launch chrome using chrome-launcher
     const chrome = await puppeteer.launch(opts);
     opts.port = chrome.port;
+    console.log(opts.port);
 
     // Connect to it using puppeteer.connect().
-    const resp = await util.promisify(request)(`http://localhost:${opts.port}/json/version`);
+    const resp = await util.promisify(request)(`http://localhost:9222/json/version`);
     const { webSocketDebuggerUrl } = JSON.parse(resp.body);
     const browser = await puppeteer.connect({ browserWSEndpoint: webSocketDebuggerUrl });
 
