@@ -18,7 +18,7 @@
     },
     "upload": {
       "target": "filesystem",
-      "outputDir": "reports",
+      "outputDir": "lighthouse",
       "reportFilenamePattern": "reports"
     }
   }
