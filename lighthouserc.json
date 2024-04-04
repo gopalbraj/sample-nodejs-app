@@ -13,9 +13,6 @@
       "startServerCommand": "echo 'Server Started listening'",
       "numberOfRuns": 1
     },
-    "assert": {
-      "budgetsFile": "budget.json"
-    },
     "upload": {
       "target": "filesystem",
       "outputDir": "lighthouse",
