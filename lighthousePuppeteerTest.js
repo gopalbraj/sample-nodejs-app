@@ -1,4 +1,4 @@
-const chromeLauncher = require('chrome-launcher');
+/const chromeLauncher = require('chrome-launcher');
 const puppeteer = require('puppeteer');
 const lighthouse = require('lighthouse');
 const config = require('lighthouse/lighthouse-core/config/lr-desktop-config.js');
