@@ -1,15 +1,24 @@
-const chromeLauncher = require('chrome-launcher');
-const puppeteer = require('puppeteer');
-const lighthouse = require('lighthouse');
-const config = require('lighthouse/lighthouse-core/config/lr-desktop-config.js');
-const reportGenerator = require('lighthouse/lighthouse-core/report/report-generator');
-const request = require('request');
-const util = require('util');
-const fs = require('fs');
+import { launch } from 'chrome-launcher';
+//const chromeLauncher = require('chrome-launcher');
+//const puppeteer = require('puppeteer');
+import puppeteer from 'puppeteer';
+import lighthouse from 'lighthouse';
+//const lighthouse = require('lighthouse');
+//import config from 'lighthouse/core/config/desktop-config';
+//const config = require('lighthouse/lighthouse-core/config/lr-desktop-config.js');
+import { generateReport } from 'lighthouse';
+//const reportGenerator = require('lighthouse/lighthouse-core/report/report-generator');
+import request from 'request';
+//const request = require('request');
+import util from 'util';
+//const util = require('util');
+import fs from 'fs';
+//const fs = require('fs');
 const sleep = seconds =>
     new Promise(resolve => setTimeout(resolve, (seconds || 1) * 1000));
 let scoresBelowBaseline = false;
-let assert = require('assert');
+//let assert = require('assert');
+import assert from 'assert';
 
 
 const app_name = "Blueprint";
@@ -32,7 +41,7 @@ const app_name = "Blueprint";
     };
 
     // Launch chrome using chrome-launcher
-    const chrome = await chromeLauncher.launch(opts);
+    const chrome = await launch(opts);
     opts.port = chrome.port;
 
     // Connect to it using puppeteer.connect().
