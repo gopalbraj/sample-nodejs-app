@@ -13,7 +13,7 @@ pipeline {
             steps {
                 sh 'npm install'
                 sh 'npm install -g @lhci/cli@0.13.x'
-                sh 'node lighthousePuppeteerTest.js'
+                sh 'node lighthousePuppeteerTest.mjs'
                 //sh 'lhci autorun'
             }
         }
