@@ -1,14 +1,14 @@
 
-import { launch } from 'chrome-launcher';
+import { Launcher, launch } from 'chrome-launcher';
 //const chromeLauncher = require('chrome-launcher');
 //const puppeteer = require('puppeteer');
 import puppeteer from 'puppeteer';
 import lighthouse from 'lighthouse';
 //const lighthouse = require('lighthouse');
-//import config from 'lighthouse/core/config/desktop-config';
+import config from 'lighthouse/core/config/desktop-config.js';
 //const config = require('lighthouse/lighthouse-core/config/lr-desktop-config.js');
 import { generateReport } from 'lighthouse';
-//const reportGenerator = require('lighthouse/lighthouse-core/report/report-generator');
+//const reportGenerator = require('lighthouse/core/report/generator/report-generator.js');
 import request from 'request';
 //const request = require('request');
 import util from 'util';
@@ -42,34 +42,38 @@ const app_name = "Blueprint";
     };
 
     // Launch chrome using chrome-launcher
-    const chrome = await puppeteer.launch(opts);
-    opts.port = chrome.port;
-    console.log(opts.port);
+    const instance = new Launcher();
+    const chrome = await instance.launch(opts);
 
+    opts.port = instance.port;
+    console.log(opts.port);
     // Connect to it using puppeteer.connect().
-    const resp = await util.promisify(request)(`http://localhost:9222/json/version`);
+    const resp = await util.promisify(request)(`http://localhost:${opts.port}/json/version`);
     const { webSocketDebuggerUrl } = JSON.parse(resp.body);
     const browser = await puppeteer.connect({ browserWSEndpoint: webSocketDebuggerUrl });
 
 
     // Visit Blueprint.com
-    page = (await browser.pages())[0];
+    const page = (await browser.pages())[0];
     await page.setViewport({ width: 1200, height: 900 });
     await page.goto(homeURL, { waitUntil: 'networkidle2' });
-    await runLighthouseForURL(page.url(), opts, "Blueprint Homepage");
+    await runLighthouseForURL(page.url(), opts, "Homepage");
 
 
     // Visit a subject
+    console.log("before click");
     await page.goto(subjectsURL, { waitUntil: 'networkidle2' });
     await page.evaluate(() => {
         document.querySelector('#Samsung_1 > span').click();
     });
+    console.log("after click");
     await page.waitForNavigation();
-    await runLighthouseForURL(page.url(), opts, "Blueprint samsung");
+    await runLighthouseForURL(page.url(), opts, "samsung");
 
 
     await browser.disconnect();
-    await chrome.kill();
+    //await chrome.kill();
+    await instance.kill();
 
 
     try {
@@ -93,11 +97,14 @@ async function runLighthouseForURL(pageURL, opts, reportName) {
     let scores = { Performance: 0, Accessibility: 0, "Best Practices": 0, SEO: 0 };
     let slackArray = [];
 
+    console.log("in runLighthouseForURL");
     const report = await lighthouse(pageURL, opts, config).then(results => {
         return results;
     });
-    const html = reportGenerator.generateReport(report.lhr, 'html');
-    const json = reportGenerator.generateReport(report.lhr, 'json');
+    //const html = reportGenerator.generateReport(report.lhr, 'html');
+    const html = generateReport(report.lhr, 'html');
+    //const json = reportGenerator.generateReport(report.lhr, 'json');
+    const json = generateReport(report.lhr, 'json');
     scores.Performance = JSON.parse(json).categories.performance.score;
     scores.Accessibility = JSON.parse(json).categories.accessibility.score;
     scores["Best Practices"] = JSON.parse(json)["categories"]["best-practices"]["score"];
