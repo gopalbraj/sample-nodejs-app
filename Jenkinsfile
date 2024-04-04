@@ -1,10 +1,6 @@
 pipeline {
     agent any
-
-    environment {
-        HROME_PATH="/usr/bin/google-chrome"
-    }
- 
+    
     tools {nodejs "node"}
     
     stages {
