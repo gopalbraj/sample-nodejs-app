@@ -14,7 +14,7 @@
       "numberOfRuns": 1
     },
     "assert": {
-      "budgetsFile": "lighthouse\budget.json"
+      "budgetsFile": "lighthouse/budget.json"
     },
     "upload": {
       "target": "filesystem",
