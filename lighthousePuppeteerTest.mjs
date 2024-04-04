@@ -42,7 +42,7 @@ const app_name = "Blueprint";
     };
 
     // Launch chrome using chrome-launcher
-    const chrome = await launch(opts);
+    const chrome = await puppeteer.launch(opts);
     opts.port = chrome.port;
 
     // Connect to it using puppeteer.connect().
