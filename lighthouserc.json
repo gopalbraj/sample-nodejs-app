@@ -8,7 +8,7 @@
         "chromeFlags": "--no-sandbox --headless"
       },
       "url": [
-        "https://verizon-nextjs-sandbox-default.glb.edgio.link/ngd/blueprint/smartphones"
+        "https://test.com/ngd/blueprint/smartphones"
       ],
       "startServerCommand": "echo 'Server Started listening'",
       "numberOfRuns": 1

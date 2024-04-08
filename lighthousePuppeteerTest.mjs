@@ -18,8 +18,8 @@ const app_name = "Blueprint";
 
 (async () => {
 
-    const homeURL = 'https://verizon-nextjs-sandbox-default.glb.edgio.link/ngd/blueprint/smartphones';
-    const subjectsURL = 'https://verizon-nextjs-sandbox-default.glb.edgio.link/ngd/blueprint/smartphones/samsung';
+    const homeURL = 'https://test.com/ngd/blueprint/smartphones';
+    const subjectsURL = 'https://test.com/ngd/blueprint/smartphones/samsung';
 
     const opts = {
         //chromeFlags: ['--headless'],
