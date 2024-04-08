@@ -1,28 +1,30 @@
 pipeline {
     agent any
-    
-    tools {nodejs "node"}
-    
+    tools {
+        nodejs "node" 
+    }
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/gopalbraj/sample-nodejs-app.git'
+                checkout scm 
             }
         }
-        stage('Build') {
+        stage('Install') {
             steps {
                 sh 'npm install'
-                sh 'npm install -g @lhci/cli@0.13.x'
-                //sh 'node lighthousePuppeteerTest.mjs'
-                sh 'lhci autorun'
-                
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'npm test'
+            }
+        }
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('YourSonarQube') {
+                    sh 'npm run sonar'
+                }
             }
         }
     }
-    post {
-        always {
-            lighthouseReport 'lighthouse/reports'
-        }
-    }
-  
 }

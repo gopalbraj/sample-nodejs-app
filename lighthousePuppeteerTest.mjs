@@ -1,24 +1,16 @@
 
 import { Launcher, launch } from 'chrome-launcher';
-//const chromeLauncher = require('chrome-launcher');
-//const puppeteer = require('puppeteer');
 import puppeteer from 'puppeteer';
 import lighthouse from 'lighthouse';
-//const lighthouse = require('lighthouse');
 import config from 'lighthouse/core/config/desktop-config.js';
-//const config = require('lighthouse/lighthouse-core/config/lr-desktop-config.js');
 import { generateReport } from 'lighthouse';
-//const reportGenerator = require('lighthouse/core/report/generator/report-generator.js');
 import request from 'request';
-//const request = require('request');
 import util from 'util';
-//const util = require('util');
 import fs from 'fs';
-//const fs = require('fs');
 const sleep = seconds =>
     new Promise(resolve => setTimeout(resolve, (seconds || 1) * 1000));
 let scoresBelowBaseline = false;
-//let assert = require('assert');
+
 import assert from 'assert';
 
 

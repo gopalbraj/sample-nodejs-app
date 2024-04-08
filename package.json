@@ -1,13 +1,13 @@
 {
   "name": "sample-nodejs-app",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
     "lhci": "lhci autorun",
-    "start": "node lighthousePuppeteerTest.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "test": "jest",
+    "sonar": "sonar-scanner"
   },
   "keywords": [],
   "author": "",
@@ -22,5 +22,22 @@
     "puppeteer": "^22.6.2",
     "request": "2.88.2",
     "sqlite3": "^5.1.7"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gopalbraj/sample-nodejs-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gopalbraj/sample-nodejs-app/issues"
+  },
+  "homepage": "https://github.com/gopalbraj/sample-nodejs-app#readme",
+  "description": "",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "sonarqube-scanner": "^3.4.0",
+    "supertest": "^6.3.4"
   }
 }
