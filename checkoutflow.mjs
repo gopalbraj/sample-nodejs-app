@@ -29,4 +29,5 @@ export default async function (context, commands) {
     await commands.click.byXpathAndWait('//*[@id="goToCartCTA"]/span[2]');
     return commands.measure.stop();
 
+
 };
