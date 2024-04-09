@@ -25,8 +25,10 @@ export default async function (context, commands) {
 
     await commands.click.byXpathAndWait('//*[@id="cta-btn"]/div[1]/button/span[1]');
 
+    await commands.click.byXpathAndWait('//*[@data-testid="zipConfirm"]/span[1]');
+    
     await commands.measure.start('Plan page');
-    await commands.click.byXpathAndWait('//*[@id="goToCartCTA"]/span[2]');
+    await commands.click.byXpathAndWait('//*[@data-testid="goToCartCTA"]/span[1]');
     return commands.measure.stop();
 
 
