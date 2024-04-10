@@ -1,0 +1,26 @@
+{
+    "budget": {
+        "timings": {
+            "firstPaint": 1000,
+            "fullyLoaded": 5000
+        },
+        "rules": {
+            "default": 85,
+            "speedIndex": 3000
+        },
+        "coach": {
+            "advice.performance.score": 75,
+            "advice.info.domElements": 300
+        },
+        "thirdParty": {
+            "requestTime": 2000
+        },
+        "transferSize": {
+            "html": 100000,
+            "css": 100000,
+            "image": 300000,
+            "javascript": 300000,
+            "total": 1500000
+        }
+    }
+}
